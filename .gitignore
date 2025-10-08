@@ -1,5 +1,5 @@
 #ignore data files
-archive/
+Datasets/archive
 
 #ignore system or IDE files
 .DS_Store
