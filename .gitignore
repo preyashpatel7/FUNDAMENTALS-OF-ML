@@ -1,0 +1,5 @@
+#ignore data files
+archive/
+
+#ignore system or IDE files
+.DS_Store
