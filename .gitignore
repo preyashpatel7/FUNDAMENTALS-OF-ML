@@ -1,5 +1,6 @@
 #ignore data files
 Datasets/archive
+Datasets/connectionist*
 
 #ignore system or IDE files
 .DS_Store
