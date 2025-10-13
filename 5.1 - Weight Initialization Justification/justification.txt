@@ -1,0 +1,39 @@
+1. Probalem with initializing all weights to same cause neural netowrk work as one node. 
+Then, what's the point of having multiple nodes!!!
+
+if the second matrix in the multiplication has the same value in every cell, 
+the result will have the same values in every row.    
+
+Now imagine that the first and second matrices are respectively x (the inputs) and 
+w1 (the first layer’s weights) of a neural network. Once the multiplication is done, 
+the resulting matrix passes through a sigmoid and results in the hidden layer 
+h. Now h has the same values in each row, it means that all the hidden nodes of 
+the network have the same value. And when we initialize all the weights with 
+the same value, we force our network to behave as if it has only one hidden node.
+
+If w2 is also initialized uniformly, this symmetry-preserving effect happens 
+on the second layer as well, and even during backpropagation.
+
+"uniform weights cause the network to behave like a one-node network"
+
+2. Larger weights kill neurons => dead neurons
+
+large values can cause problems if the network’s functions are not numerically stable. 
+​​​They can push those functions past the brink, making them overflow.
+
+Also, they can slow down the network’s training, and even halt it completely.
+Consider what happens if one of the weights in w1 is very large, 
+either positive or negative. In that case, the sigmoid gets a large input. 
+With a large input, the sigmoid becomes a very flat function, 
+with a gradient close to 0. In technical terms, the sigmoid gets saturated: 
+it gets pushed outside of its ideal range of operation, 
+to a place where its gradient becomes tiny. => check sigmoid graph
+
+During backpropagation, that tiny gradient gets multiplied by all the other 
+gradients in the chain, and results in a small overall gradient. 
+In turn, that small gradient forces gradient descent to take very tiny steps.
+
+Sigmoid value for weights initialized at value 10 will become 1.0 -> no more trainable
+
+Sigmoid gradient value for weights initialized at value 10 will become 0.0 ->
+Flat surface, no more weight changes -> dead neuron.
